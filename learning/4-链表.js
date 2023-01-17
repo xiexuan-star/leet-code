@@ -1,46 +1,4 @@
-class ListNode {
-  /**
-   * @param {number|null} value
-   * @param {ListNode|null}next
-   */
-  constructor(value = null, next = null) {
-    this.value = value;
-    this.next = next;
-  }
-
-  /**
-   * @param {number|null} value
-   * @param {ListNode|null}next
-   */
-  static of(value = null, next = null) {
-    return new ListNode(value, next);
-  }
-
-  /**
-   * @param {ListNode} chain
-   */
-  static traverse(chain) {
-    const result = [];
-    do {
-      result.push(chain.value);
-      chain = chain.next;
-    } while (chain);
-
-    return result;
-  }
-
-  /**
-   * @param {number[]} values
-   * @return {ListNode}
-   */
-  static create(values) {
-    return values.reverse().reduce((res, value, idx) => {
-      res.value = value;
-      if (idx === values.length - 1) return res;
-      return new ListNode(null, res);
-    }, ListNode.of());
-  }
-}
+const { ListNode } = require('./utils');
 
 /**
  * @desc 将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有结点组成的。
@@ -101,7 +59,7 @@ function uniqueList(list) {
   return list;
 }
 
-console.log(ListNode.traverse(uniqueList(ListNode.create([1, 2, 3, 3, 4, 4, 5]))));
+console.log(ListNode.toArray(uniqueList(ListNode.create([1, 2, 3, 3, 4, 4, 5]))));
 
 /**
  * @desc 给定一个排序链表，删除所有含有重复数字的结点，只保留原始链表中 没有重复出现的数字。
@@ -129,5 +87,5 @@ function dummy(list) {
 }
 
 console.log(
-  ListNode.traverse(dummy(ListNode.create([1, 2, 3, 3, 3, 4, 4, 5])))
+  ListNode.toArray(dummy(ListNode.create([1, 2, 3, 3, 3, 4, 4, 5])))
 );
