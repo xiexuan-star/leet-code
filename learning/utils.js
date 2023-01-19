@@ -52,4 +52,32 @@ class ListNode {
   }
 }
 
-module.exports = { ListNode };
+class Stack {
+  #list = [];
+
+  push(...v) {
+    this.#list.push(...v);
+  }
+
+  peek() {
+    return this.#list[this.#list.length - 1];
+  }
+
+  pop() {
+    return this.#list.pop();
+  }
+
+  size() {
+    return this.#list.length;
+  }
+
+  empty() {
+    return !this.#list.length;
+  }
+
+  static of() {
+    return new Stack();
+  }
+}
+
+module.exports = { ListNode, Stack };

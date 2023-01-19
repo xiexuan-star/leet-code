@@ -50,8 +50,7 @@ class MinStack {
   stack = [];
   min = [];
 
-  push(v) {
-    if (!Array.isArray(v)) v = [v];
+  push(...v) {
     v.forEach(_v => {
       this.stack.push(_v);
       if (!this.min.length || _v < this.min[this.min.length - 1]) {
@@ -82,5 +81,5 @@ class MinStack {
 
 const list = MinStack.of();
 
-list.push([4, 3, 5, 6, 7, 2, 1]);
+list.push(4, 3, 5, 6, 7, 2, 1);
 console.log(list.min);
